@@ -14,6 +14,7 @@ Enable editing of the treeview on TinyMCE.
 
 Enable the jQuery treeview on the page of wordpress.
 It is easily editable on the TinyMCE.
+[youtube http://www.youtube.com/watch?v=YGjGuzG0aoc]
 
 This plugin used jQuery Treeview Plugin.
 jQuery Treeview plugin http://bassistance.de/jquery-plugins/jquery-plugin-treeview/
