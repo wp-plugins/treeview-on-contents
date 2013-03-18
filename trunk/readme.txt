@@ -44,3 +44,10 @@ There is no question yet.
 == Upgrade Notice ==
 
 No upgrade, so far.
+
+== Arbitrary section ==
+
+For Japanese
+
+これはtrunkに追記しているもので、これが表示されてしまっていたらNG.
+が、しかし、何故Screenshotsの項目にPlugin Nameセクションのshort descriptionが表示されるのやら・・・
