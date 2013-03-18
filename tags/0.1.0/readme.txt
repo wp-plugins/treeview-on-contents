@@ -2,8 +2,8 @@
 Contributors: sekishi
 Donate link: http://lab.planetleaf.com/donate/
 Tags: tinymce, editor , treeview , contents
-Requires at least: 3.5
-Tested up to: 3.5
+Requires at least: 3.3
+Tested up to: 3.5.1
 Stable tag: 0.1.0
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
