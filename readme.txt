@@ -2,10 +2,10 @@
 Contributors: sekishi
 Donate link: http://lab.planetleaf.com/donate/
 Tags: tinymce, editor , treeview , contents
-Requires at least: 3.5
-Tested up to: 3.5
+Requires at least: 3.3
+Tested up to: 3.5.1
 Stable tag: 0.1.0
-License: GPLv2
+License: GPLv2 or
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Enable editing of the treeview on TinyMCE.
@@ -14,6 +14,7 @@ Enable editing of the treeview on TinyMCE.
 
 Enable the jQuery treeview on the page of wordpress.
 It is easily editable on the TinyMCE.
+[youtube http://www.youtube.com/watch?v=YGjGuzG0aoc]
 
 This plugin used jQuery Treeview Plugin.
 jQuery Treeview plugin http://bassistance.de/jquery-plugins/jquery-plugin-treeview/
@@ -23,11 +24,15 @@ A setup of JQuery Treeview Plugin is possible as the option of a shortcode [tvon
 == Installation ==
 
 1. Upload the entire `treeview-on-contents` folder to the `/wp-content/plugins/` directory.
-1. Activate the plugin through the 'Plugins' menu in WordPress.
+1. Activate the plugin through the 'Plugins' menu in WordPress
 
 == Frequently Asked Questions ==
 
-There is no question yet.
+Q: treeview is broken when you install the google analyticator.
+A: Please disable the setting of Outbound link tracking.
+
+= What about foo bar? =
+
 
 == Screenshots ==
 
@@ -38,16 +43,10 @@ There is no question yet.
 
 == Changelog ==
 
-## 0.1.0 ##
+= 0.1.0 =
 * NEW: Initial release.
 
 == Upgrade Notice ==
 
 No upgrade, so far.
 
-== Arbitrary section ==
-
-For Japanese
-
-これはtrunkに追記しているもので、これが表示されてしまっていたらNG.
-が、しかし、何故Screenshotsの項目にPlugin Nameセクションのshort descriptionが表示されるのやら・・・
