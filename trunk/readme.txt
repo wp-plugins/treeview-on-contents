@@ -1,6 +1,6 @@
 === Treeview On Contents ===
 Contributors: sekishi
-Donate link:
+Donate link: http://lab.planetleaf.com/donate/
 Tags: tinymce, editor , treeview , contents
 Requires at least: 3.5
 Tested up to: 3.5
@@ -32,7 +32,7 @@ There is no question yet.
 == Screenshots ==
 
 1. Re-editing is possible when you select a shortcode [tvoncmeta].
-2. Html tag in a treeview can be embedded. 
+2. Html tag in a treeview can be embedded.
 3. Files can be imported using FILE API. 
 4. Treeview can be edited by drag and drop.
 
