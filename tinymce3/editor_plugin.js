@@ -55,7 +55,7 @@
 				author : 'sekishi',
 				authorurl : 'http://lab.planetleaf.com',
 				infourl : 'http://lab.planetleaf.com',
-				version : "0.1.0"
+				version : "0.1.1"
 			};
 		}
 
