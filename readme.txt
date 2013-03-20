@@ -44,12 +44,12 @@ A: Please disable the setting of Outbound link tracking.
 
 == Changelog ==
 
-= 0.1.0 =
-* NEW: Initial release.
-
 = 0.1.1 =
 * The selected text when you try to change the item name.
 * Work on the wordpress version 3.3 or later.
+
+= 0.1.0 =
+* NEW: Initial release.
 
 
 == Upgrade Notice ==
