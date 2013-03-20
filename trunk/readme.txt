@@ -2,10 +2,11 @@
 Contributors: sekishi
 Donate link: http://lab.planetleaf.com/donate/
 Tags: tinymce, editor , treeview , contents
+
 Requires at least: 3.3
 Tested up to: 3.5.1
-Stable tag: 0.1.0
-License: GPLv2 or
+Stable tag: 0.1.1
+License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Enable editing of the treeview on TinyMCE.
@@ -45,6 +46,11 @@ A: Please disable the setting of Outbound link tracking.
 
 = 0.1.0 =
 * NEW: Initial release.
+
+= 0.1.1 =
+* The selected text when you try to change the item name.
+* Work on the wordpress version 3.3 or later.
+
 
 == Upgrade Notice ==
 
