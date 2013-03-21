@@ -452,10 +452,16 @@ jQuery(function() {
 		// name edit
 		var node = jQuery(event.target).closest('li').find('span:first');
 		if( !jQuery(event.target).is('li') && !jQuery(event.target).is('div') && node.is('span') && node.text() ) {
-			//node.find('*').removeClass('hover');
+			node.find('*').each(
+				function(){
+					jQuery(this).removeClass('hover');
+					if( !jQuery(this).hasClass() ){
+						jQuery(this).removeAttr('class');
+					}
+				});
 			str = node.html();
 			node.html("<input id='tempstrbox' name='tempstrbox' type='text' value='"+str+"'>");
-			
+			jQuery('#tempstrbox').focus().select();
 			jQuery('#tempstrbox').focus().blur(function(){
 				var inputVal = jQuery(this).val();
 				if(inputVal===''){
