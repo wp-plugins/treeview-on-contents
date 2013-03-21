@@ -14,7 +14,7 @@
 		init : function(ed, url) {
 
 			ed.addButton('treeview-on-contents-button', {
-				title : 'Insert TreeView', //tileのテキスト
+				title : 'Insert TreeView',
 				image : url + '/tvonc_mce_icon.png',
 				onclick : function() {
 					ed.windowManager.open({
@@ -55,7 +55,7 @@
 				author : 'sekishi',
 				authorurl : 'http://lab.planetleaf.com',
 				infourl : 'http://lab.planetleaf.com',
-				version : "0.1.1"
+				version : "0.1.2"
 			};
 		}
 

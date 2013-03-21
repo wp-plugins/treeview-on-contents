@@ -5,7 +5,7 @@ Tags: tinymce, editor , treeview , contents
 
 Requires at least: 3.3
 Tested up to: 3.5.1
-Stable tag: 0.1.1
+Stable tag: 0.1.2
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,6 +43,10 @@ A: Please disable the setting of Outbound link tracking.
 4. Treeview can be edited by drag and drop.
 
 == Changelog ==
+
+= 0.1.2 =
+* Enable a localization.
+* Added Japanese localization file.
 
 = 0.1.1 =
 * The selected text when you try to change the item name.

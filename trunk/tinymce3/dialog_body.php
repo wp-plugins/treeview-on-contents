@@ -2,9 +2,13 @@
 <html>
 <head>
 
+
 <meta charset="<?php echo get_option('blog_charset'); ?>" />
 
-<title><?php _e('TreeView On Contents', 'tvonc_wp_plugin'); ?></title>
+<!-- <?php load_plugin_textdomain('treeview-on-contents', false, get_option('siteurl').'/wp-content/plugins/treeview-on-contents/languages/' ); ?> -->
+
+
+<title><?php _e('TreeView On Contents', 'treeview-on-contents'); ?></title>
 
 <link rel="stylesheet" type="text/css" href="<?php echo get_option('siteurl') ?>/wp-includes/js/tinymce/themes/advanced/skins/wp_theme/dialog.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo get_option('siteurl') ?>/wp-content/plugins/treeview-on-contents/css/jquery.treeview.css" />
@@ -36,14 +40,14 @@
 	<div class="modalBody close" ondragover="onFileOver(event)" ondrop="onFileDrop(event)" 
 				style="position:ixed;">
 		<div>
-			<p><b><?php _e('Import files to treeview', 'tvonc_wp_plugin'); ?></b><p>
-			<p><b><?php _e('Click to close', 'tvonc_wp_plugin'); ?></b></p>
-			<p><br><br></p>
-			<p>
-				<span id="message-of-drop">
-					<b><?php _e('Please drop file or directory.', 'tvonc_wp_plugin'); ?></b>
-				</span>
-			</p>
+			<p><br></p>
+			<p><br></p>
+			<p><b><?php _e('Import files to treeview', 'treeview-on-contents'); ?></b></p>
+			<p><b><?php _e('Click to close', 'treeview-on-contents'); ?></b></p>
+			<p><br></p>
+			<span id="message-of-drop">
+				<b><?php _e('Please drop file or directory.', 'treeview-on-contents'); ?></b>
+			</span>
 		</div>
 		
 	</div>
@@ -52,15 +56,15 @@
 
 <div class="contextMenu" id="tvoncMenu" style="visibility: hidden;">
 	<ul>
-		<li id="import"><img src="import.gif" /><?php _e('Import OS files', 'tvonc_wp_plugin'); ?></li>
-		<li id="folder"><img src="folder-closed.gif" /><?php _e('Add Folder', 'tvonc_wp_plugin'); ?></li>
-		<li id="file"><img src="file.gif" /><?php _e('Add File', 'tvonc_wp_plugin'); ?></li>
-		<li id="iconchange"><img src="folder-closed.gif" /><img src="change.png" /><img src="file.gif" /><br><?php _e('Change Icon', 'tvonc_wp_plugin'); ?></li>
-		<li id="delete"><img src="cross.png" /><?php _e('Delete', 'tvonc_wp_plugin'); ?></li>
+		<li id="import"><img src="import.gif" /><?php _e('Import OS files', 'treeview-on-contents'); ?></li>
+		<li id="folder"><img src="folder-closed.gif" /><?php _e('Add Folder', 'treeview-on-contents'); ?></li>
+		<li id="file"><img src="file.gif" /><?php _e('Add File', 'treeview-on-contents'); ?></li>
+		<li id="iconchange"><img src="folder-closed.gif" /><img src="change.png" /><img src="file.gif" /><br><?php _e('Change Icon', 'treeview-on-contents'); ?></li>
+		<li id="delete"><img src="cross.png" /><?php _e('Delete', 'treeview-on-contents'); ?></li>
 	</ul>
 </div>
 
-<p>Would you please determine the value of this plugin.</p>
+<p><?php _e('Would you please determine the value of this plugin.', 'treeview-on-contents') ?></p>
 
 <div class="mceActionPanel">
 	<div style="float: left">
@@ -72,18 +76,18 @@
 		</form>
 	</div>
 		<form action="#">
-			<div style="float: right"><input type="button" id="cancel" name="cancel" value="<?php _e('Cancel', 'tvonc_wp_plugin'); ?>" onclick="tinyMCEPopup.close();" /></div>
-			<div style="float: right"><input type="submit" id="insert" name="insert" value="<?php _e('Insert', 'tvonc_wp_plugin'); ?>" onclick="tvonc_InsertTreeView();" /></div>
+			<div style="float: right"><input type="button" id="cancel" name="cancel" value="<?php _e('Cancel', 'treeview-on-contents'); ?>" onclick="tinyMCEPopup.close();" /></div>
+			<div style="float: right"><input type="submit" id="insert" name="insert" value="<?php _e('Insert', 'treeview-on-contents'); ?>" onclick="tvonc_InsertTreeView();" /></div>
 		<br style="clear:both" />
 	</form>
 </div>
 
 <from action="#">
-<input type="radio" name="treeviewtype" value="treeview" onclick="javascript:tvonc_setViewType(0);"><?php _e('normal', 'tvonc_wp_plugin'); ?>
-<input type="radio" name="treeviewtype" value="treeview-red" onclick="javascript:tvonc_setViewType(1);"><?php _e('red', 'tvonc_wp_plugin'); ?>
-<input type="radio" name="treeviewtype" value="treeview-black" onclick="javascript:tvonc_setViewType(2);"><?php _e('black', 'tvonc_wp_plugin'); ?>
-<input type="radio" name="treeviewtype" value="treeview-famfamfam" onclick="javascript:tvonc_setViewType(3);"><?php _e('famfamfam', 'tvonc_wp_plugin'); ?>
-<input type="radio" name="treeviewtype" value="filetree" onclick="javascript:tvonc_setViewType(4);"><?php _e('file', 'tvonc_wp_plugin'); ?>
+<input type="radio" name="treeviewtype" value="treeview" onclick="javascript:tvonc_setViewType(0);"><?php _e('normal', 'treeview-on-contents'); ?>
+<input type="radio" name="treeviewtype" value="treeview-red" onclick="javascript:tvonc_setViewType(1);"><?php _e('red', 'treeview-on-contents'); ?>
+<input type="radio" name="treeviewtype" value="treeview-black" onclick="javascript:tvonc_setViewType(2);"><?php _e('black', 'treeview-on-contents'); ?>
+<input type="radio" name="treeviewtype" value="treeview-famfamfam" onclick="javascript:tvonc_setViewType(3);"><?php _e('famfamfam', 'treeview-on-contents'); ?>
+<input type="radio" name="treeviewtype" value="filetree" onclick="javascript:tvonc_setViewType(4);"><?php _e('file', 'treeview-on-contents'); ?>
 </from>
 
 <from>
