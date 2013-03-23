@@ -19,8 +19,8 @@
 				onclick : function() {
 					ed.windowManager.open({
 						file : url + '/dialog.php',
-						width : 360,
-						height : 360,
+						width : 380,
+						height : 380,
 						inline : 1,
 						maximizable : true
 					}, {
@@ -55,7 +55,6 @@
 				author : 'sekishi',
 				authorurl : 'http://lab.planetleaf.com',
 				infourl : 'http://lab.planetleaf.com',
-				version : "0.1.2"
 			};
 		}
 

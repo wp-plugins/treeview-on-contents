@@ -5,9 +5,6 @@
 
 <meta charset="<?php echo get_option('blog_charset'); ?>" />
 
-<!-- <?php load_plugin_textdomain('treeview-on-contents', false, get_option('siteurl').'/wp-content/plugins/treeview-on-contents/languages/' ); ?> -->
-
-
 <title><?php _e('TreeView On Contents', 'treeview-on-contents'); ?></title>
 
 <link rel="stylesheet" type="text/css" href="<?php echo get_option('siteurl') ?>/wp-includes/js/tinymce/themes/advanced/skins/wp_theme/dialog.css" />
@@ -28,6 +25,61 @@
 #draggtarget > div > span {
 	border-bottom: solid 2px #ff0000;
 }
+
+
+div.radio-group {
+	margin-bottom: 32px;
+}
+div.radio-group div {
+	position: relative;
+}
+div.radio-group input {
+	opacity: 0;
+	filter: alpha(opacity=0);
+	position: absolute;
+	left: 0px;
+	outline:none;
+}
+div.radio-group label {
+	cursor: pointer;
+	padding: 5px 10px;
+	float: left;
+	border: solid 1px #aaa;
+	margin-left: -1px;
+	background: #eee;
+	background-image: -moz-linear-gradient(top, #F6F6F6, #ccc);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#F6F6F6), to(#ccc));
+	box-shadow: 2px 2px 6px #aaa;
+	-webkit-box-shadow: 2px 2px 6px #aaa;
+	-moz-box-shadow: 2px 2px 6px #aaa;
+	text-shadow: 1px 1px 0px #fff;
+}
+div.radio-group label:first-child {
+	//border-radius: 7px 0px 0px 7px / 7px 0px 0px 7px;
+	border-top-left-radius: 7px;
+	border-bottom-left-radius: 7px;
+	-webkit-border-top-left-radius: 7px;
+	-webkit-border-bottom-left-radius: 7px;
+	-moz-border-radius-topleft: 7px;
+	-moz-border-radius-bottomleft: 7px;
+}
+div.radio-group label:last-child {
+	//border-radius: 0px 7px 7px 0px / 0px 7px 7px 0px;
+	border-top-right-radius: 7px;
+	border-bottom-right-radius: 7px;
+	-webkit-border-top-right-radius: 7px;
+	-webkit-border-bottom-right-radius: 7px;
+	-moz-border-radius-topright: 7px;
+	-moz-border-radius-bottomright: 7px;
+}
+div.radio-group label.checked  {
+	color: #fff;
+	background: #B3B3B3;
+	background-image: -moz-linear-gradient(top, #C3C3C3, #DBDBDB);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#C3C3C3), to(#DBDBDB));
+	text-shadow: 0px 0px 0px #fff;
+}
+
 
 -->
 </style>
@@ -64,31 +116,48 @@
 	</ul>
 </div>
 
-<p><?php _e('Would you please determine the value of this plugin.', 'treeview-on-contents') ?></p>
-
 <div class="mceActionPanel">
 	<div style="float: left">
-		<form action="https://www.paypal.com/cgi-bin/webscr" target="_new" method="post">
-		<input type="hidden" name="cmd" value="_s-xclick">
-		<input type="hidden" name="hosted_button_id" value="Y6HYEXJBHUCE4">
-		<input type="image" src="https://www.paypal.com/images/x-click-but7.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online.">
-		<img alt="" border="0" src="https://www.paypalobjects.com/ja_JP/i/scr/pixel.gif" width="1" height="1">
-		</form>
+		<a href="http://wordpress.org/extend/plugins/treeview-on-contents/" target="new" 
+			title="<?php _e('Please check compatibility and rating for this plugin will continue to improve.', 'treeview-on-contents') ?>">
+			<b><?php _e('Rate it now!', 'treeview-on-contents') ?></b>
+			</a>
 	</div>
-		<form action="#">
-			<div style="float: right"><input type="button" id="cancel" name="cancel" value="<?php _e('Cancel', 'treeview-on-contents'); ?>" onclick="tinyMCEPopup.close();" /></div>
-			<div style="float: right"><input type="submit" id="insert" name="insert" value="<?php _e('Insert', 'treeview-on-contents'); ?>" onclick="tvonc_InsertTreeView();" /></div>
-		<br style="clear:both" />
+	<form action="#">
+		<div style="float: right">
+			<input type="button" id="cancel" name="cancel" value="<?php _e('Cancel', 'treeview-on-contents'); ?>" onclick="tinyMCEPopup.close();" />
+		</div>
+		<div style="float: right">
+			<input type="submit" id="insert" name="insert" value="<?php _e('Insert', 'treeview-on-contents'); ?>" onclick="tvonc_InsertTreeView();" />
+		</div>
 	</form>
+	<br style="clear:both" />
 </div>
 
-<from action="#">
-<input type="radio" name="treeviewtype" value="treeview" onclick="javascript:tvonc_setViewType(0);"><?php _e('normal', 'treeview-on-contents'); ?>
-<input type="radio" name="treeviewtype" value="treeview-red" onclick="javascript:tvonc_setViewType(1);"><?php _e('red', 'treeview-on-contents'); ?>
-<input type="radio" name="treeviewtype" value="treeview-black" onclick="javascript:tvonc_setViewType(2);"><?php _e('black', 'treeview-on-contents'); ?>
-<input type="radio" name="treeviewtype" value="treeview-famfamfam" onclick="javascript:tvonc_setViewType(3);"><?php _e('famfamfam', 'treeview-on-contents'); ?>
-<input type="radio" name="treeviewtype" value="filetree" onclick="javascript:tvonc_setViewType(4);"><?php _e('file', 'treeview-on-contents'); ?>
-</from>
+
+<b><?php _e('Tree Style', 'treeview-on-contents') ?></b><br>
+<div class="radio-group clearfix">
+	<label>
+		<?php _e('Normal', 'treeview-on-contents'); ?>
+		<input type="radio" name="treeviewtype" value="treeview" onclick="javascript:tvonc_setViewType(0);">
+	</label>
+	<label>
+		<?php _e('Red', 'treeview-on-contents'); ?>
+		<input type="radio" name="treeviewtype" value="treeview-red" onclick="javascript:tvonc_setViewType(1);">
+	</label>
+	<label>
+		<?php _e('Black', 'treeview-on-contents'); ?>
+		<input type="radio" name="treeviewtype" value="treeview-black" onclick="javascript:tvonc_setViewType(2);">
+	</label>
+	<label>
+		<?php _e('FamFamFam', 'treeview-on-contents'); ?>
+		<input type="radio" name="treeviewtype" value="treeview-famfamfam" onclick="javascript:tvonc_setViewType(3);">
+	</label>
+	<label>
+		<?php _e('File', 'treeview-on-contents'); ?>
+		<input type="radio" name="treeviewtype" value="filetree" onclick="javascript:tvonc_setViewType(4);">
+	</label>
+</div>
 
 <from>
 <div id="previewtreeview"></div>
