@@ -37,8 +37,6 @@ var ROOTFOLDER_STR = '<div><span class="root">=== tree edit root ===</span></div
 var FOLDER_STR = '<div><span class="folder">new item</span></div>';
 var FILE_STR = '<div><span class="file">new item</span></div>';
 
-function hrefdisabler(event) { event.preventDefault(); }
-
 function filesSelected(files) {
 	var tag = '';
 	for (var i = 0; i < files.length; i++) {
@@ -70,16 +68,19 @@ function filesSelected(files) {
 	
 }
 
-function onFileOver(e) {
-	e.preventDefault();
+function onFileOver( event ) {
+	event.preventDefault();
 }
 
-function onFileDrop(e) {
-	
-	e.preventDefault();
-	filesSelected(e.dataTransfer.files);
+function onFileDrop( event ) {
+	event.preventDefault();
+	filesSelected(event.dataTransfer.files);
 }
 
+function eventdisabler( event ) {
+	event.preventDefault();
+	return false;
+}
 
 function tvonc_setViewType( no ) {
 
@@ -93,7 +94,7 @@ function tvonc_setViewType( no ) {
 function tvonc_InsertTreeView() {
 	var code;
 	
-	jQuery("#previewtreeview a[href]").unbind('click', hrefdisabler);
+	jQuery("#previewtreeview a[href]").unbind('click', eventdisabler);
 	
 	jQuery('#previewtreeview li').removeAttr('style');
 	jQuery('#previewtreeview *').removeClass('ui-droppable ui-draggable last collapsable lastCollapsable expandable lastExpandable');
@@ -165,22 +166,30 @@ function tvonc_setFocusSourceCode() {
 		
 		html = html.replace(/id="(.*?)"/,' id="'+FUNC_CODE+'"');
 		
-		var viewtypestr = html.match(/ul class="(.*?)"/);
+		var viewtypestr = html.match(/<ul class="(.*?)"/);
 		var ii = 0;
+		if( viewtypestr == null ){
+			viewtypestr = html.match(/id="(.*?)" class="(.*?)"/);
+			viewtypestr[1] = viewtypestr[2];
+		}
+		
 		if( viewtypestr != null ){
 			if( viewtypestr[1] == 'treeview' )ii = 0;
 			if( viewtypestr[1] == 'treeview-red' )ii = 1;
+			if( viewtypestr[1] == 'treeview-red treeview' )ii = 1;
 			if( viewtypestr[1] == 'treeview-black' )ii = 2;
+			if( viewtypestr[1] == 'treeview-black treeview' )ii = 2;
 			if( viewtypestr[1] == 'treeview-famfamfam' )ii = 3;
-			if( viewtypestr[1] == 'filetree treeview' )ii = 4;
+			if( viewtypestr[1] == 'treeview-famfamfam treeview' )ii = 3;
 			if( viewtypestr[1] == 'filetree' )ii = 4;
+			if( viewtypestr[1] == 'filetree treeview' )ii = 4;
 		}else{
 			ii = 4;
 			var viewtypestr = html.match(/ul class="(.*?)"/);
 		}
-		
-		document.getElementsByName('treeviewtype')[ii].checked = true;
-
+		//document.getElementsByName('treeviewtype')[ii].checked = true;
+		jQuery("input[name='treeviewtype']:eq("+ii+")").attr("checked", true);
+		jQuery("input[name='treeviewtype']:eq("+ii+")").parents().addClass('checked');
 		
 		jQuery('#previewtreeview').html(html);
 		
@@ -213,14 +222,19 @@ function tvonc_setFocusSourceCode() {
 	}else{
 		FUNC_CODE = "TV"+getuuid();
 		html = '<ul class="filetree treeview" id="'+FUNC_CODE+'"><ul><li>'+ROOTFOLDER_STR+'</li></ul></ul>';
-		document.getElementsByName("treeviewtype")[4].checked = true;
+	//	document.getElementsByName("treeviewtype")[4].checked = true;
+		jQuery("input[name='treeviewtype']:eq(4)").attr("checked", true);
+		jQuery("input[name='treeviewtype']:eq(4)").parents().addClass('checked');
 		
 		jQuery('#previewtreeview').html(html);
 	}
 	jQuery('#'+FUNC_CODE).treeview();
 	
-	jQuery("#previewtreeview a[href]").bind("click", hrefdisabler);
+	jQuery("#previewtreeview a[href]").bind("click", eventdisabler);
+	jQuery("*").bind("load", eventdisabler);
+	
 	fullbindContextMenu();
+	
 	
 	draggnode = jQuery("#previewtreeview li:first");
 	draggnode.attr('id', 'draggtarget');
@@ -244,7 +258,7 @@ function tvonc_modifytreeview() {
 	
 	
 	jQuery('#'+FUNC_CODE).treeview();
-	jQuery("#previewtreeview a[href]").bind("click", hrefdisabler);
+	jQuery("#previewtreeview a[href]").bind("click", eventdisabler);
 	fullbindContextMenu();
 }
 
@@ -270,7 +284,7 @@ function tvonc_source2html() {
 	jQuery('#previewtreeview').html(html);
 
 	jQuery('#'+FUNC_CODE).treeview();
-	jQuery("#previewtreeview a[href]").bind("click", hrefdisabler);
+	jQuery("#previewtreeview a[href]").bind("click", eventdisabler);
 	fullbindContextMenu();
 }
 
@@ -413,7 +427,6 @@ function fullbindContextMenu() {
 			'delete': function( t ) {
 				if (jQuery( t ).is('li') || jQuery( t ).parents('li').length) {
 					jQuery('#draggtarget').remove();
-					//alert( jQuery('#previewtreeview').children().children().html() );
 					
 					if( jQuery('#previewtreeview').children().children().html() ){
 						tvonc_source2html();
@@ -431,6 +444,16 @@ function fullbindContextMenu() {
 
 
 jQuery(function() {
+	
+	var radio = jQuery('div.radio-group');
+	radio.disableSelection();
+	jQuery('input', radio).css({'opacity': '0'});
+	jQuery('label', radio).click(function() {
+		jQuery(this).parent().parent().each(function() {
+			jQuery('label',this).removeClass('checked');	
+		});
+		jQuery(this).addClass('checked');
+	});
 	
 	jQuery('.close,.modalBK').click(function(){
 		jQuery('.modal').animate(
@@ -489,13 +512,14 @@ jQuery(function() {
 		// dragg start
 		jQuery('body').css('cursor','auto');
 		jQuery('#previewtreeview *').removeClass('ui-droppable ui-draggable');
-		jQuery("#previewtreeview a[href]").bind("click", hrefdisabler);
 
 		if( !(typeof draggnode === 'undefined') && !jQuery(event.target).is('input') ){
 			var inputnode = draggnode.find('input');
 			if( inputnode.size() > 0 ){
 				inputnode.closest('span').html( inputnode.val() );
+				tvonc_modifytreeview();
 			}
+			
 		}
 		
 		var node = jQuery(event.target).closest('li').find('span:first');
@@ -507,11 +531,21 @@ jQuery(function() {
 			
 			if( event.which == 1 ){
 				dragswitch = 1;
+				
+				if( !draggnode.parent().parent().is('ul') ){
+					draggnode.draggable({
+						cursor: 'move',
+						opacity: 1 ,
+						revert: true ,
+						scroll: false
+					}).data('draggable')._mouseDown(event);
+				}
+				
 			}
 			
 		}
 	})
-	
+
 	
 	jQuery('#previewtreeview').mouseup( function(event) {
 		if( event.which == 1 ){
@@ -524,16 +558,7 @@ jQuery(function() {
 	jQuery('#previewtreeview').mousemove( function(event) {
 		if( dragswitch ){
 			dragswitch = 0;
-			if( !draggnode.parent().parent().is('ul') ){
-				draggnode.draggable({
-					cursor: 'move',
-					opacity: 1 ,
-					revert: true ,
-					scroll: false
-				}).data('draggable')._mouseDown(event);
-			}
-			
-			
+
 			if( !(typeof draggnode === 'undefined') ){
 				
 				jQuery('#previewtreeview span').droppable({
@@ -541,12 +566,19 @@ jQuery(function() {
 					accept: draggnode ,
 					hoverClass: 'ui-droppable-hover',
 					drop: function(event,ui) {
+						
+						var dropnode_html = draggnode.html();
+						
 						jQuery('body').css('cursor','auto');
 						jQuery('#previewtreeview ul:empty').remove();
 						jQuery('#previewtreeview div:empty').remove();
 						draggnode.find('div:empty').remove();
-						jQuery('#draggtarget').remove();
 						
+						
+						// === Fixed Firefox ===
+						jQuery('#draggtarget').find('a[href]').removeAttr('href');
+						jQuery('#draggtarget').remove();
+						// === Fixed Firefox ===
 						var inputnode = draggnode.find('input');
 						if( inputnode.size() > 0 ){
 							inputnode.closest('span').html( inputnode.val() );
@@ -559,7 +591,7 @@ jQuery(function() {
 								// --+
 								//	 +- new 
 								// 
-								var branches = node.append('<ul><li>'+draggnode.html()+'</li></ul>');
+								var branches = node.append('<ul><li>'+dropnode_html+'</li></ul>');
 								jQuery('#'+FUNC_CODE).treeview({ add: branches });
 								tvonc_source2html();
 								return;
@@ -569,7 +601,7 @@ jQuery(function() {
 							//	 +-folder
 							//	 +- new 
 							// 
-							var branches = node.prepend('<li>'+draggnode.html()+'</li>');
+							var branches = node.prepend('<li>'+dropnode_html+'</li>');
 							jQuery('#'+FUNC_CODE).treeview({ add: branches });
 							tvonc_source2html();
 							return;

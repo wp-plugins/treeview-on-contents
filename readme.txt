@@ -5,7 +5,7 @@ Tags: tinymce, editor , treeview , contents
 
 Requires at least: 3.3
 Tested up to: 3.5.1
-Stable tag: 0.1.2
+Stable tag: 0.1.3
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,11 +29,8 @@ A setup of JQuery Treeview Plugin is possible as the option of a shortcode [tvon
 
 == Frequently Asked Questions ==
 
-Q: treeview is broken when you install the google analyticator.
-A: Please disable the setting of Outbound link tracking.
-
-= What about foo bar? =
-
+= treeview is broken when you install the google analyticator. =
+Please disable the setting of Outbound link tracking.
 
 == Screenshots ==
 
@@ -43,6 +40,11 @@ A: Please disable the setting of Outbound link tracking.
 4. Treeview can be edited by drag and drop.
 
 == Changelog ==
+
+= 0.1.3 =
+* New design of the dialog.
+* Fixed a bug where the event(hyperlinks) would fire when you drop the item.
+* Fixed a bug where the radio buttons are not getting reflected in some versions of wordpress.
 
 = 0.1.2 =
 * Enable a localization.

@@ -1,9 +1,9 @@
 <?php
 /*
  * Plugin Name: TreeView On Contents
- * Plugin URI: http://lab.planetleaf.com/
+ * Plugin URI: http://wordpress.org/extend/plugins/treeview-on-contents/
  * Description: TreeView On Contents.
- * Version: 0.1.2
+ * Version: 0.1.3
  * Author: sekishi
  * Author URI: http://lab.planetleaf.com/
  * Text Domain: treeview-on-contents
@@ -26,7 +26,7 @@ function wp_tvonc_plugin_url( $path = '' ) {
 
 
 class TreeViewOnContents {
-	var $version = '0.1.2';
+	var $version = '0.1.3';
 	var $buttons = array();
 	
 	
