@@ -1,9 +1,9 @@
 <?php
 /*
  * Plugin Name: TreeView On Contents
- * Plugin URI: http://wordpress.org/extend/plugins/treeview-on-contents/
+ * Plugin URI: http://lab.planetleaf.com/development/wordpress/treeview-on-contents-plugin.html
  * Description: TreeView On Contents.
- * Version: 0.1.3
+ * Version: 0.1.4
  * Author: sekishi
  * Author URI: http://lab.planetleaf.com/
  * Text Domain: treeview-on-contents
@@ -25,8 +25,10 @@ function wp_tvonc_plugin_url( $path = '' ) {
 }
 
 
+
+
 class TreeViewOnContents {
-	var $version = '0.1.3';
+	var $version = '0.1.4';
 	var $buttons = array();
 	
 	
@@ -38,10 +40,10 @@ class TreeViewOnContents {
 		$this->tvonc_addbuttons();
 		
 		if( !is_admin() ){
-			add_action('wp_print_scripts', array(&$this,'add_jquery_treeview_js') );
-			
+			add_action( 'wp_print_scripts' , array(&$this,'add_jquery_treeview_js') );
+		}else{
+			add_action( 'admin_head' , array( &$this, 'tvonc_action_javascript' ), 15 );
 		}
-
 	}
 	
 	function tvonc_addbuttons() {
@@ -50,7 +52,6 @@ class TreeViewOnContents {
 		if ( ! current_user_can('edit_posts') && ! current_user_can('edit_pages') ) {
 			return;
 		}
-		//load_plugin_textdomain("advanced-code-button", false, dirname(plugin_basename(__FILE__)) . '/languages' );
 		
 		if ( get_user_option('rich_editing') == 'true') {
 			add_filter( 'mce_external_plugins', array(&$this, 'mce_external_plugins') );
@@ -58,8 +59,9 @@ class TreeViewOnContents {
 		}
 	}
 	
-	
-
+ 	function tvonc_action_javascript() {
+		echo '<meta id="treeview-on-contents" name="use_easy_block_selector" content="' . get_option( 'use_easy_block_selector') . '" />' . "\n";
+	}
 
 	// Load the custom TinyMCE plugin
 	function mce_external_plugins( $plugins ) {
@@ -90,7 +92,7 @@ class TreeViewOnContents {
 
 
 function GenerateTreeViewOnContents($atts,$content=null) {
-	return $content;
+	return do_shortcode( $content );
 }
 
 function add_css_js()
@@ -128,9 +130,6 @@ add_action('wp_head', 'add_css_js' );
 // Start this plugin once all other plugins are fully loaded
 add_action('init', 'TreeViewOnContents' );
 
-
-
-
 function TreeViewOnContents() {
 	
 	global $TreeViewOnContents;
@@ -138,4 +137,42 @@ function TreeViewOnContents() {
 	
 }
 
+add_action('admin_menu', 'tvonc_plugin_menu');
+
+function tvonc_plugin_menu() {
+	add_options_page('TreeView On Contents', 'TreeView On Contents', 8, __FILE__, 'tvonc_options');
+}
+
+function tvonc_options() {
+    $use_easy_block_selector = get_option( 'use_easy_block_selector' , 1 );
 ?>
+<div class="wrap">
+    <?php screen_icon(); ?>
+
+    <h2>TreeView On Contents: <?php _e('Options', 'treeview-on-contents') ?></h2>
+    <form method="post" action="options.php">
+        <?php wp_nonce_field('update-options'); ?>
+        <table class="form-table">
+            <tr valign="top">
+                <th scope="row"><?php _e('Extension of the range selection', 'treeview-on-contents') ?></th>
+                <td><fieldset>
+                    <label for="use_easy_block_selector">
+                        <input type="checkbox" name="use_easy_block_selector" value="1" align="left" <?php checked( $use_easy_block_selector ); ?> >                                    
+                        <?php _e('Enable the easy selection of short code and html tags.', 'treeview-on-contents') ?>
+                    </label>
+                </fieldset></td>
+            </tr>
+        </table>
+
+        <p class="submit">
+            <input type="hidden" name="action" value="update" />
+            <input type="hidden" name="page_options" value="use_easy_block_selector" />
+            <input type="submit" name="update_option" class="button-primary" value="<?php _e('Save Changes'); ?>" />
+        </p>
+
+    </form>
+</div>
+<?php
+}
+?>
+

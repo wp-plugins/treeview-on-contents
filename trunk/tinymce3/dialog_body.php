@@ -55,7 +55,7 @@ div.radio-group label {
 	text-shadow: 1px 1px 0px #fff;
 }
 div.radio-group label:first-child {
-	//border-radius: 7px 0px 0px 7px / 7px 0px 0px 7px;
+	/* border-radius: 7px 0px 0px 7px / 7px 0px 0px 7px; */
 	border-top-left-radius: 7px;
 	border-bottom-left-radius: 7px;
 	-webkit-border-top-left-radius: 7px;
@@ -64,7 +64,7 @@ div.radio-group label:first-child {
 	-moz-border-radius-bottomleft: 7px;
 }
 div.radio-group label:last-child {
-	//border-radius: 0px 7px 7px 0px / 0px 7px 7px 0px;
+	/* border-radius: 0px 7px 7px 0px / 0px 7px 7px 0px; */
 	border-top-right-radius: 7px;
 	border-bottom-right-radius: 7px;
 	-webkit-border-top-right-radius: 7px;
@@ -89,8 +89,8 @@ div.radio-group label.checked  {
 <body>
 
 <div id="dropwindow" class="modal wd1">
-	<div class="modalBody close" ondragover="onFileOver(event)" ondrop="onFileDrop(event)" 
-				style="position:ixed;">
+	<div class="modalBody close" ondragover="onFileOver(event);" ondrop="onFileDrop(event);" 
+				style="position:fixed;">
 		<div>
 			<p><br></p>
 			<p><br></p>
@@ -178,7 +178,6 @@ div.radio-group label.checked  {
 <script type="text/javascript" src="<?php echo get_option('siteurl') ?>/wp-content/plugins/treeview-on-contents/js/jquery.treeview.edit.js"></script>
 
 <script type="text/javascript" src="<?php echo get_option('siteurl') ?>/wp-content/plugins/treeview-on-contents/tinymce3/jquery.contextmenu.r2.js"></script>
-
 <script type="text/javascript" src="<?php echo get_option('siteurl') ?>/wp-content/plugins/treeview-on-contents/tinymce3/tvonc_mce.js"></script>
 
 </body>

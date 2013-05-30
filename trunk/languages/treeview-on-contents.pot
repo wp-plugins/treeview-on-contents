@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TreeView On Contents 0.1.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/treeview-on-contents\n"
-"POT-Creation-Date: 2013-03-22 12:54+0900\n"
-"PO-Revision-Date: 2013-03-22 12:55+0900\n"
+"POT-Creation-Date: 2013-05-03 15:02+0900\n"
+"PO-Revision-Date: 2013-05-03 15:02+0900\n"
 "Last-Translator: \n"
 "Language-Team: lab.planetleaf.com <sekishi1259@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -13,86 +13,101 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.5\n"
 "X-Poedit-KeywordsList: _e;_ex\n"
+"X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: wp-content\\plugins\\treeview-on-contents\n"
+"X-Poedit-SearchPath-1: T:\\wordpress33\\wp-content\\plugins\\treeview-on-"
+"contents\n"
 
-#: wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:8
+#: T:\wordpress33\wp-content\plugins\treeview-on-contents/treeview-on-contents.php:152
+msgid "Options"
+msgstr ""
+
+#: T:\wordpress33\wp-content\plugins\treeview-on-contents/treeview-on-contents.php:157
+msgid "Extension of the range selection"
+msgstr ""
+
+#: T:\wordpress33\wp-content\plugins\treeview-on-contents/treeview-on-contents.php:161
+msgid "Enable the easy selection of short code and html tags."
+msgstr ""
+
+#: T:\wordpress33\wp-content\plugins\treeview-on-contents/treeview-on-contents.php:170
+msgid "Save Changes"
+msgstr ""
+
+#: T:\wordpress33\wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:8
 msgid "TreeView On Contents"
 msgstr ""
 
-#: wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:97
+#: T:\wordpress33\wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:97
 msgid "Import files to treeview"
 msgstr ""
 
-#: wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:98
+#: T:\wordpress33\wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:98
 msgid "Click to close"
 msgstr ""
 
-#: wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:101
+#: T:\wordpress33\wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:101
 msgid "Please drop file or directory."
 msgstr ""
 
-#: wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:111
+#: T:\wordpress33\wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:111
 msgid "Import OS files"
 msgstr ""
 
-#: wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:112
+#: T:\wordpress33\wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:112
 msgid "Add Folder"
 msgstr ""
 
-#: wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:113
+#: T:\wordpress33\wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:113
 msgid "Add File"
 msgstr ""
 
-#: wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:114
+#: T:\wordpress33\wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:114
 msgid "Change Icon"
 msgstr ""
 
-#: wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:115
+#: T:\wordpress33\wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:115
 msgid "Delete"
 msgstr ""
 
-#: wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:121
-msgid "Would you please determine the value of this plugin."
-msgstr ""
-
-#: wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:130
+#: T:\wordpress33\wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:122
 msgid ""
 "Please check compatibility and rating for this plugin will continue to "
 "improve."
 msgstr ""
 
-#: wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:131
+#: T:\wordpress33\wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:123
 msgid "Rate it now!"
 msgstr ""
 
-#: wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:135
+#: T:\wordpress33\wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:128
 msgid "Cancel"
 msgstr ""
 
-#: wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:136
+#: T:\wordpress33\wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:131
 msgid "Insert"
 msgstr ""
 
-#: wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:142
+#: T:\wordpress33\wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:138
 msgid "Tree Style"
 msgstr ""
 
-#: wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:145
+#: T:\wordpress33\wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:141
 msgid "Normal"
 msgstr ""
 
-#: wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:149
+#: T:\wordpress33\wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:145
 msgid "Red"
 msgstr ""
 
-#: wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:153
+#: T:\wordpress33\wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:149
 msgid "Black"
 msgstr ""
 
-#: wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:157
+#: T:\wordpress33\wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:153
 msgid "FamFamFam"
 msgstr ""
 
-#: wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:161
+#: T:\wordpress33\wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:157
 msgid "File"
 msgstr ""

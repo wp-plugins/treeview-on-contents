@@ -1,11 +1,11 @@
 === Treeview On Contents ===
 Contributors: sekishi
 Donate link: http://lab.planetleaf.com/donate/
-Tags: tinymce, editor , treeview , contents
+Tags: tinymce, editor , tree , view , contents
 
 Requires at least: 3.3
 Tested up to: 3.5.1
-Stable tag: 0.1.3
+Stable tag: 0.1.4
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -15,7 +15,14 @@ Enable editing of the treeview on TinyMCE.
 
 Enable the jQuery treeview on the page of wordpress.
 It is easily editable on the TinyMCE.
-[youtube http://www.youtube.com/watch?v=YGjGuzG0aoc]
+
+Automatically selects the enclosing shortcodes.(version 0.1.4 or later)
+This mode is the same as the Easy Block Selector plugin.
+
+Treeview On Contents Plugin Overview.
+http://lab.planetleaf.com/development/wordpress/treeview-on-contents-plugin.html
+
+
 
 This plugin used jQuery Treeview Plugin.
 jQuery Treeview plugin http://bassistance.de/jquery-plugins/jquery-plugin-treeview/
@@ -40,6 +47,12 @@ Please disable the setting of Outbound link tracking.
 4. Treeview can be edited by drag and drop.
 
 == Changelog ==
+
+= 0.1.4 =
+* Automatically selects the enclosing shortcodes.
+* Fixed a bug when selecting a list tag.
+* Support a nested shortcode.
+* Add the option to dashboard setting.
 
 = 0.1.3 =
 * New design of the dialog.
