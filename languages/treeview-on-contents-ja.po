@@ -4,60 +4,72 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TreeView On Contents 0.1.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/treeview-on-contents\n"
-"POT-Creation-Date: 2013-03-22 12:54+0900\n"
-"PO-Revision-Date: 2013-03-22 13:07+0900\n"
+"POT-Creation-Date: 2013-05-03 15:02+0900\n"
+"PO-Revision-Date: 2013-05-03 15:05+0900\n"
 "Last-Translator: \n"
 "Language-Team: lab.planetleaf.com <sekishi1259@gmail.com>\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.5\n"
 "X-Poedit-KeywordsList: _e;_ex\n"
-"Language: ja\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: wp-content\\plugins\\treeview-on-contents\n"
 
-#: wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:8
+#: T:\wordpress33\wp-content\plugins\treeview-on-contents/treeview-on-contents.php:152
+msgid "Options"
+msgstr "設定"
+
+#: T:\wordpress33\wp-content\plugins\treeview-on-contents/treeview-on-contents.php:157
+msgid "Extension of the range selection"
+msgstr "範囲選択の拡張"
+
+#: T:\wordpress33\wp-content\plugins\treeview-on-contents/treeview-on-contents.php:161
+msgid "Enable the easy selection of short code and html tags."
+msgstr "ショートコードやHTMLタグを簡単に選択できるようにします。"
+
+#: T:\wordpress33\wp-content\plugins\treeview-on-contents/treeview-on-contents.php:170
+msgid "Save Changes"
+msgstr ""
+
+#: T:\wordpress33\wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:8
 msgid "TreeView On Contents"
 msgstr ""
 
-#: wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:97
+#: T:\wordpress33\wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:97
 msgid "Import files to treeview"
 msgstr "ツリーにファイルをインポートします"
 
-#: wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:98
+#: T:\wordpress33\wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:98
 msgid "Click to close"
 msgstr "クリックして終了します"
 
-#: wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:101
+#: T:\wordpress33\wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:101
 msgid "Please drop file or directory."
 msgstr "ファイルやディレクトリをドロップしてください。（複数可）"
 
-#: wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:111
+#: T:\wordpress33\wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:111
 msgid "Import OS files"
 msgstr "ファイルのインポート"
 
-#: wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:112
+#: T:\wordpress33\wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:112
 msgid "Add Folder"
 msgstr "フォルダーの追加"
 
-#: wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:113
+#: T:\wordpress33\wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:113
 msgid "Add File"
 msgstr "ファイルの追加"
 
-#: wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:114
+#: T:\wordpress33\wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:114
 msgid "Change Icon"
 msgstr "アイコンの変更"
 
-#: wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:115
+#: T:\wordpress33\wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:115
 msgid "Delete"
 msgstr "削除"
 
-#: wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:121
-msgid "Would you please determine the value of this plugin."
-msgstr "あなたがこのプラグインの価値を決めて下さい。"
-
-#: wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:130
+#: T:\wordpress33\wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:122
 msgid ""
 "Please check compatibility and rating for this plugin will continue to "
 "improve."
@@ -65,38 +77,41 @@ msgstr ""
 "このプラグインを改善していくためにレーティングと互換性のチェックをお願いしま"
 "す。"
 
-#: wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:131
+#: T:\wordpress33\wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:123
 msgid "Rate it now!"
 msgstr "評価してください！"
 
-#: wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:135
+#: T:\wordpress33\wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:128
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:136
+#: T:\wordpress33\wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:131
 msgid "Insert"
 msgstr "挿入"
 
-#: wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:142
+#: T:\wordpress33\wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:138
 msgid "Tree Style"
 msgstr ""
 
-#: wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:145
+#: T:\wordpress33\wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:141
 msgid "Normal"
 msgstr ""
 
-#: wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:149
+#: T:\wordpress33\wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:145
 msgid "Red"
 msgstr ""
 
-#: wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:153
+#: T:\wordpress33\wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:149
 msgid "Black"
 msgstr ""
 
-#: wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:157
+#: T:\wordpress33\wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:153
 msgid "FamFamFam"
 msgstr ""
 
-#: wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:161
+#: T:\wordpress33\wp-content\plugins\treeview-on-contents/tinymce3/dialog_body.php:157
 msgid "File"
 msgstr ""
+
+#~ msgid "Would you please determine the value of this plugin."
+#~ msgstr "あなたがこのプラグインの価値を決めて下さい。"

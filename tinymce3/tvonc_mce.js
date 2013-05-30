@@ -19,7 +19,7 @@
 function getuuid() {
 	var c4 = function() {
 		return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
-	}  
+	};
 	return (c4()+c4()+'_'+c4()+'_'+c4()+'_'+c4()+'_'+c4()+c4()+c4());
 }
 
@@ -40,17 +40,17 @@ var FILE_STR = '<div><span class="file">new item</span></div>';
 function filesSelected(files) {
 	var tag = '';
 	for (var i = 0; i < files.length; i++) {
-		if( files[i].type == 'folder' || files[i].size == 0 ){
+		if( files[i].type === 'folder' || files[i].size === 0 ){
 			tag = tag + '<li><div><span class="folder">' + files[i].name + '</span></div></li>';
 		}else{
 			tag = tag + '<li><div><span class="file">' + files[i].name + '</span></div></li>';
 		}
 	}
 	var rootnode = jQuery('#draggtarget');
-	if( rootnode.size() == 0 ){
+	if( rootnode.size() === 0 ){
 		rootnode = jQuery('#previewtreeview').find('ul:first > ul > li');
 	}
-	var node = rootnode.find('ul:first');;
+	var node = rootnode.find('ul:first');
 	if( !node.html() ){
 		node = rootnode;
 		var branches = node.append( '<ul>' + tag +'</ul>' );
@@ -168,21 +168,23 @@ function tvonc_setFocusSourceCode() {
 		
 		var viewtypestr = html.match(/<ul class="(.*?)"/);
 		var ii = 0;
-		if( viewtypestr == null ){
+		if( viewtypestr === null ){
 			viewtypestr = html.match(/id="(.*?)" class="(.*?)"/);
-			viewtypestr[1] = viewtypestr[2];
+			if( viewtypestr ){
+				viewtypestr[1] = viewtypestr[2];
+			}
 		}
 		
-		if( viewtypestr != null ){
-			if( viewtypestr[1] == 'treeview' )ii = 0;
-			if( viewtypestr[1] == 'treeview-red' )ii = 1;
-			if( viewtypestr[1] == 'treeview-red treeview' )ii = 1;
-			if( viewtypestr[1] == 'treeview-black' )ii = 2;
-			if( viewtypestr[1] == 'treeview-black treeview' )ii = 2;
-			if( viewtypestr[1] == 'treeview-famfamfam' )ii = 3;
-			if( viewtypestr[1] == 'treeview-famfamfam treeview' )ii = 3;
-			if( viewtypestr[1] == 'filetree' )ii = 4;
-			if( viewtypestr[1] == 'filetree treeview' )ii = 4;
+		if( viewtypestr ){
+			if( viewtypestr[1] === 'treeview' )ii = 0;
+			if( viewtypestr[1] === 'treeview-red' )ii = 1;
+			if( viewtypestr[1] === 'treeview-red treeview' )ii = 1;
+			if( viewtypestr[1] === 'treeview-black' )ii = 2;
+			if( viewtypestr[1] === 'treeview-black treeview' )ii = 2;
+			if( viewtypestr[1] === 'treeview-famfamfam' )ii = 3;
+			if( viewtypestr[1] === 'treeview-famfamfam treeview' )ii = 3;
+			if( viewtypestr[1] === 'filetree' )ii = 4;
+			if( viewtypestr[1] === 'filetree treeview' )ii = 4;
 		}else{
 			ii = 4;
 			var viewtypestr = html.match(/ul class="(.*?)"/);
@@ -349,11 +351,11 @@ function fullbindContextMenu() {
 				
 				blinkinterval = setInterval(
 						function(){
-							jQuery("#message-of-drop").fadeOut(800,function(){jQuery(this).fadeIn(800)});
+							jQuery("#message-of-drop").fadeOut(800,function(){jQuery(this).fadeIn(800);});
 						},1600
 					);
 				jQuery('#dropwindow').css({'display':'block' });
-				jQuery('#dropwindow').animate({'opacity':'0.8'},'fast')
+				jQuery('#dropwindow').animate({'opacity':'0.8'},'fast');
 				
 			},
 			'folder': function( t ) {
@@ -457,13 +459,13 @@ jQuery(function() {
 	
 	jQuery('.close,.modalBK').click(function(){
 		jQuery('.modal').animate(
-			{opacity:0,},
+			{opacity:0},
 			{
 				duration:'fast',complete:
 				function() {
 					clearInterval( blinkinterval );
 					jQuery('.modal').css({'display':'none'});
-				},
+				}
 			}
 		);
 	});	
@@ -505,7 +507,7 @@ jQuery(function() {
 			});
 			return true;
 		}
-	})
+	});
 	
 
 	jQuery('#previewtreeview').mousedown( function(event) {
@@ -529,7 +531,7 @@ jQuery(function() {
 			jQuery('#draggtarget').removeAttr('id');
 			draggnode.attr('id', 'draggtarget');
 			
-			if( event.which == 1 ){
+			if( event.which === 1 ){
 				dragswitch = 1;
 				
 				if( !draggnode.parent().parent().is('ul') ){
@@ -544,16 +546,16 @@ jQuery(function() {
 			}
 			
 		}
-	})
+	});
 
 	
 	jQuery('#previewtreeview').mouseup( function(event) {
-		if( event.which == 1 ){
+		if( event.which === 1 ){
 			if( dragswitch ){
 				dragswitch = 0;
 			}
 		}
-	})
+	});
 	
 	jQuery('#previewtreeview').mousemove( function(event) {
 		if( dragswitch ){
@@ -615,4 +617,4 @@ jQuery(function() {
 		}
 	});
 	
-})
+});
