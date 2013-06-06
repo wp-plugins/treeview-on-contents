@@ -3,14 +3,13 @@
  * Plugin Name: TreeView On Contents
  * Plugin URI: http://lab.planetleaf.com/development/wordpress/treeview-on-contents-plugin.html
  * Description: TreeView On Contents.
- * Version: 0.1.4
+ * Version: 0.1.5
  * Author: sekishi
  * Author URI: http://lab.planetleaf.com/
  * Text Domain: treeview-on-contents
  * License: GPLv2
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
-
 
 // localization
 load_plugin_textdomain( 'treeview-on-contents', false, dirname(plugin_basename( __FILE__ )). '/languages/' );
@@ -28,12 +27,14 @@ function wp_tvonc_plugin_url( $path = '' ) {
 
 
 class TreeViewOnContents {
-	var $version = '0.1.4';
+	var $version = '0.1.5';
 	var $buttons = array();
 	
 	
 	function TreeViewOnContents() {
-		
+		if( false === get_option( 'use_easy_block_selector' ) )
+			add_option( 'use_easy_block_selector', 1 );
+	  
 		if ( ! defined( 'WP_TREEVIEWONCONTENTS_PLUGIN_URL' ) )
 			define( 'WP_TREEVIEWONCONTENTS_PLUGIN_URL', untrailingslashit( plugins_url( '', __FILE__ ) ) );
 		
@@ -140,11 +141,11 @@ function TreeViewOnContents() {
 add_action('admin_menu', 'tvonc_plugin_menu');
 
 function tvonc_plugin_menu() {
-	add_options_page('TreeView On Contents', 'TreeView On Contents', 8, __FILE__, 'tvonc_options');
+  add_options_page('TreeView On Contents Settings', 'TreeView On Contents', 'manage_options', 'tvonc_settings', 'tvonc_options');
 }
 
 function tvonc_options() {
-    $use_easy_block_selector = get_option( 'use_easy_block_selector' , 1 );
+  $use_easy_block_selector = get_option( 'use_easy_block_selector' , 1 );
 ?>
 <div class="wrap">
     <?php screen_icon(); ?>
@@ -157,7 +158,8 @@ function tvonc_options() {
                 <th scope="row"><?php _e('Extension of the range selection', 'treeview-on-contents') ?></th>
                 <td><fieldset>
                     <label for="use_easy_block_selector">
-                        <input type="checkbox" name="use_easy_block_selector" value="1" align="left" <?php checked( $use_easy_block_selector ); ?> >                                    
+                        <input type="checkbox" name="use_easy_block_selector" value="1" align="left"
+				<?php checked( $use_easy_block_selector ); ?> >                                    
                         <?php _e('Enable the easy selection of short code and html tags.', 'treeview-on-contents') ?>
                     </label>
                 </fieldset></td>
@@ -171,8 +173,8 @@ function tvonc_options() {
         </p>
 
     </form>
+  
 </div>
 <?php
 }
 ?>
-
