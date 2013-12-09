@@ -3,7 +3,7 @@
  * Plugin Name: TreeView On Contents
  * Plugin URI: http://lab.planetleaf.com/development/wordpress/treeview-on-contents-plugin.html
  * Description: TreeView On Contents.
- * Version: 0.1.5
+ * Version: 0.1.6
  * Author: sekishi
  * Author URI: http://lab.planetleaf.com/
  * Text Domain: treeview-on-contents
@@ -105,7 +105,7 @@ function add_css_js()
 	
 	$js = "";
 	
-	foreach($posts as $post) {
+	foreach((array)$posts as $post) {
 		if (isset($post->post_content)) {
 			$post_content = $post->post_content;
 			if ( !empty($post_content) && preg_match_all('/\[tvoncmeta([^\]]*)\]([\s\S<]*?)\[/',$post_content,$matches) ) {
