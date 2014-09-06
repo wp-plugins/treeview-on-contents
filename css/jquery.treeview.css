@@ -1,6 +1,7 @@
 
 .treeview, .treeview ul {
-	padding: 0;
+	line-height: 16px;
+	padding: 0 !important;
 	margin: 0;
 	list-style: none;
 }

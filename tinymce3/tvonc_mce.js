@@ -8,8 +8,8 @@
  * License: GPLv2
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  *
- * Version: beta1
- * Date: 9 mar 2013
+ * Version: 0.1.7
+ * Date: 9 sep 2014
  * 
  * Copyright 2013 sekishi http://lab.planetleaf.com/
  * For documentation visit http://lab.planetleaf.com/
@@ -91,6 +91,18 @@ function tvonc_setViewType( no ) {
 	jQuery('#'+FUNC_CODE).treeview();
 }
 
+function get_tvonc_contents() {
+	var inst;
+	var tmce_ver=window.tinyMCE.majorVersion;
+	if( tmce_ver == "2" ){
+		inst = tinyMCE.getInstanceById('content');
+	} else {
+		inst = tinyMCE.get('content');
+	}
+	return inst;
+}
+
+
 function tvonc_InsertTreeView() {
 	var code;
 	
@@ -130,7 +142,7 @@ function tvonc_InsertTreeView() {
 	
 	code = code.replace(/<li id=".*?"/g,"<li");
 	
-	var inst = tinyMCE.getInstanceById('content');
+	var inst = get_tvonc_contents();
 	
 	var html = inst.selection.getContent();
 	if (code) {
@@ -145,7 +157,13 @@ function tvonc_InsertTreeView() {
 		tag = '[' + SHORT_CODE + SHORT_CODE_POTIONS[1] + ']' + html + '[/' + SHORT_CODE + ']';
 	}
 	
-	window.tinyMCE.execInstanceCommand('content', 'mceInsertContent', false, tag);
+	var tmce_ver=window.tinyMCE.majorVersion;
+	if( tmce_ver >= "4" ) {
+		window.tinyMCE.execCommand('mceInsertContent', false, tag);
+	} else {
+		 window.tinyMCE.execInstanceCommand('content', 'mceInsertContent', false, tag);
+	}
+	
 	tinyMCEPopup.close();
 	
 	return;
@@ -154,7 +172,7 @@ function tvonc_InsertTreeView() {
 
 
 function tvonc_setFocusSourceCode() {
-	var inst = tinyMCE.getInstanceById('content');
+	var inst = get_tvonc_contents();
 	var html = inst.selection.getContent();
 	
 	if( html ) {
@@ -535,12 +553,14 @@ jQuery(function() {
 				dragswitch = 1;
 				
 				if( !draggnode.parent().parent().is('ul') ){
-					draggnode.draggable({
+					var dragfunc;
+					dragfunc = draggnode.draggable({
 						cursor: 'move',
 						opacity: 1 ,
 						revert: true ,
 						scroll: false
-					}).data('draggable')._mouseDown(event);
+					}).data('draggable')
+					if( dragfunc )dragfunc._mouseDown(event);
 				}
 				
 			}
