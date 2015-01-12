@@ -122,142 +122,143 @@
 					
 					
 					var selection = tinyMCE.activeEditor.selection.getSel();
-					var range = selection.getRangeAt(0);
+					if( selection.rangeCount > 0 ){
+						var range = selection.getRangeAt(0);
 
-					var startNode = range.startContainer;
-					var endNode   = range.endContainer;
-					
-					var element = document.getElementById('treeview-on-contents');
-					var use_easy_block_selector = 0;
-					if( element.getAttribute("name") === 'use_easy_block_selector' && element.getAttribute("content") === '1' ){
-						use_easy_block_selector = 1;
-					}
-					
-					if( startNode.nodeValue && use_easy_block_selector )
-					{
-						var start_curpos = range.startOffset;
-						var end_curpos = range.endOffset;
-						var textnode;
-						var openshortcodestr;
-						var endshortcodestr;
-
-						var shorcodestr = "notshortcode";
-						var texttest = 0;
-						var tagheadpos = range.startOffset;
-						var cc,cc_old;
-						cc = startNode.nodeValue[ tagheadpos ];
-						if( cc === '[' ){
-							cc = startNode.nodeValue[ ++tagheadpos ];
+						var startNode = range.startContainer;
+						var endNode   = range.endContainer;
+						
+						var element = document.getElementById('treeview-on-contents');
+						var use_easy_block_selector = 0;
+						if( element.getAttribute("name") === 'use_easy_block_selector' && element.getAttribute("content") === '1' ){
+							use_easy_block_selector = 1;
 						}
-						cc_old = cc;
-						if( (cc >= 'A' && cc <= 'Z') || (cc >= 'a' && cc <= 'z') || (cc >= '0' && cc <= '9') || cc === '-' || cc === '_' ){
-							texttest = 1;
-							while( tagheadpos ){
-								tagheadpos--;
-								cc = startNode.nodeValue[ tagheadpos ];
-								if( (cc >= 'A' && cc <= 'Z') || (cc >= 'a' && cc <= 'z') || (cc >= '0' && cc <= '9') || cc === '-' || cc === '_' || cc === '/' ){
-									// 
-								}else if( cc === '[' ){
-									if( cc_old === '/' ){
-									   texttest=3;
-									}else{
-									   texttest=2;
-									}
-									break;
-								}else{
-									break;
-								}
-								cc_old = cc;
+						
+						if( startNode.nodeValue && use_easy_block_selector )
+						{
+							var start_curpos = range.startOffset;
+							var end_curpos = range.endOffset;
+							var textnode;
+							var openshortcodestr;
+							var endshortcodestr;
+
+							var shorcodestr = "notshortcode";
+							var texttest = 0;
+							var tagheadpos = range.startOffset;
+							var cc,cc_old;
+							cc = startNode.nodeValue[ tagheadpos ];
+							if( cc === '[' ){
+								cc = startNode.nodeValue[ ++tagheadpos ];
 							}
-						}
-						var taghead_endpos = tagheadpos + texttest -1;
-						if( texttest === 2	||	texttest === 3 ){
-							while( taghead_endpos < startNode.nodeValue.length ){
-								cc = startNode.nodeValue[ taghead_endpos ];
-								if( (cc >= 'A' && cc <= 'Z') || (cc >= 'a' && cc <= 'z') || (cc >= '0' && cc <= '9') || cc === '-' || cc === '_' || cc === '/' ){
-									// 
-								}else if( cc === ']' || cc === ' ' ){
-									shorcodestr = startNode.nodeValue.substring(tagheadpos + texttest -1,taghead_endpos);
-									if( texttest === 3 ){
-										// search to shortcode head
-										openshortcodestr = '['+shorcodestr;
-										end_curpos = taghead_endpos + 1;
-										start_curpos = -1;
-										while( start_curpos === -1 ){
-											if( startNode.nodeType === Node.TEXT_NODE && startNode.nodeValue.length >= openshortcodestr.length ){
-												start_curpos = startNode.nodeValue.indexOf( openshortcodestr );
-												if( start_curpos !== -1 ){
-													if( endNode === startNode && end_curpos >= start_curpos ){
-														// enclosing shortcode on the same line.
-														start_curpos = -1;
-													}else{
-														break;
-													}
-												}
-											}
-											startNode = searchPrevTextNode( startNode );
-											if( startNode === null ){
-												break;
-											}
+							cc_old = cc;
+							if( (cc >= 'A' && cc <= 'Z') || (cc >= 'a' && cc <= 'z') || (cc >= '0' && cc <= '9') || cc === '-' || cc === '_' ){
+								texttest = 1;
+								while( tagheadpos ){
+									tagheadpos--;
+									cc = startNode.nodeValue[ tagheadpos ];
+									if( (cc >= 'A' && cc <= 'Z') || (cc >= 'a' && cc <= 'z') || (cc >= '0' && cc <= '9') || cc === '-' || cc === '_' || cc === '/' ){
+										// 
+									}else if( cc === '[' ){
+										if( cc_old === '/' ){
+										   texttest=3;
+										}else{
+										   texttest=2;
 										}
-										range.setStart( startNode , start_curpos );
-										range.setEnd(	endNode   , end_curpos );
+										break;
 									}else{
-										// search to shortcode tarm
-										endshortcodestr = '[\/'+shorcodestr+']';
-										start_curpos = tagheadpos;
-										end_curpos = -1;
-										while( end_curpos === -1 ){
-											var textnode = searchTextNode( endNode );
-											if( textnode ){
-												if( textnode.nodeType === Node.TEXT_NODE && textnode.nodeValue.length >= endshortcodestr.length ){
-													end_curpos = textnode.nodeValue.indexOf( endshortcodestr );
-													if( end_curpos !== -1 ){
-														endNode = textnode;
-														if( endNode === startNode && end_curpos <= start_curpos ){
+										break;
+									}
+									cc_old = cc;
+								}
+							}
+							var taghead_endpos = tagheadpos + texttest -1;
+							if( texttest === 2	||	texttest === 3 ){
+								while( taghead_endpos < startNode.nodeValue.length ){
+									cc = startNode.nodeValue[ taghead_endpos ];
+									if( (cc >= 'A' && cc <= 'Z') || (cc >= 'a' && cc <= 'z') || (cc >= '0' && cc <= '9') || cc === '-' || cc === '_' || cc === '/' ){
+										// 
+									}else if( cc === ']' || cc === ' ' ){
+										shorcodestr = startNode.nodeValue.substring(tagheadpos + texttest -1,taghead_endpos);
+										if( texttest === 3 ){
+											// search to shortcode head
+											openshortcodestr = '['+shorcodestr;
+											end_curpos = taghead_endpos + 1;
+											start_curpos = -1;
+											while( start_curpos === -1 ){
+												if( startNode.nodeType === Node.TEXT_NODE && startNode.nodeValue.length >= openshortcodestr.length ){
+													start_curpos = startNode.nodeValue.indexOf( openshortcodestr );
+													if( start_curpos !== -1 ){
+														if( endNode === startNode && end_curpos >= start_curpos ){
 															// enclosing shortcode on the same line.
-															end_curpos = -1;
+															start_curpos = -1;
 														}else{
 															break;
 														}
 													}
 												}
+												startNode = searchPrevTextNode( startNode );
+												if( startNode === null ){
+													break;
+												}
 											}
-											endNode = searchNextTextNode( endNode );
-											if( endNode === null ){
-												break;
-											}
-										}
-										if( end_curpos === -1 ){
-											end_curpos = endNode.nodeValue.length;
+											range.setStart( startNode , start_curpos );
+											range.setEnd(	endNode   , end_curpos );
 										}else{
-											end_curpos += endshortcodestr.length;
+											// search to shortcode tarm
+											endshortcodestr = '[\/'+shorcodestr+']';
+											start_curpos = tagheadpos;
+											end_curpos = -1;
+											while( end_curpos === -1 ){
+												var textnode = searchTextNode( endNode );
+												if( textnode ){
+													if( textnode.nodeType === Node.TEXT_NODE && textnode.nodeValue.length >= endshortcodestr.length ){
+														end_curpos = textnode.nodeValue.indexOf( endshortcodestr );
+														if( end_curpos !== -1 ){
+															endNode = textnode;
+															if( endNode === startNode && end_curpos <= start_curpos ){
+																// enclosing shortcode on the same line.
+																end_curpos = -1;
+															}else{
+																break;
+															}
+														}
+													}
+												}
+												endNode = searchNextTextNode( endNode );
+												if( endNode === null ){
+													break;
+												}
+											}
+											if( end_curpos === -1 ){
+												end_curpos = endNode.nodeValue.length;
+											}else{
+												end_curpos += endshortcodestr.length;
+											}
+											range.setStart( startNode , start_curpos );
+											range.setEnd(	endNode   , end_curpos );
 										}
-										range.setStart( startNode , start_curpos );
-										range.setEnd(	endNode   , end_curpos );
+										break;
+									}else{
+										break;
 									}
-									break;
-								}else{
-									break;
+									taghead_endpos++;
 								}
-								taghead_endpos++;
-							}
-						}else{
-							if( selection.isCollapsed === false )
-							{
-								start_curpos = 0;
-								end_curpos = endNode.nodeValue.length;
-								range.setStart( startNode , start_curpos );
-								range.setEnd(	endNode   , end_curpos );
+							}else{
+								if( selection.isCollapsed === false )
+								{
+									start_curpos = 0;
+									end_curpos = endNode.nodeValue.length;
+									range.setStart( startNode , start_curpos );
+									range.setEnd(	endNode   , end_curpos );
+								}
 							}
 						}
+						selection.addRange(range);
 					}
-					window.getSelection().addRange(range);// fixed IE and Safari
-					
 					ed.windowManager.open({
-						file : url + '/dialog.php',
-						width : 380,
-						height : 380,
+						file: ajaxurl + '?action=treeview_on_contents_tinymce',
+						width : 500,
+						height : 500,
 						inline : 1,
 						maximizable : true
 					}, {
@@ -266,6 +267,7 @@
 					
 				}
 			});
+			
 		},
 
 		/**
@@ -301,3 +303,4 @@
 	// Register plugin
 	tinymce.PluginManager.add('TreeViewOnContents', tinymce.plugins.TreeViewOnContents);
 })();
+

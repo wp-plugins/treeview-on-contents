@@ -4,8 +4,8 @@ Donate link: http://lab.planetleaf.com/donate/
 Tags: tinymce, editor , tree , view , contents
 
 Requires at least: 3.3
-Tested up to: 4.0
-Stable tag: 0.1.7
+Tested up to: 4.1
+Stable tag: 0.1.8
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -48,8 +48,11 @@ Please disable the setting of Outbound link tracking.
 
 == Changelog ==
 
+= 0.1.8 =
+* support wordpress version 3.9 or higher ( tinyMCE version 4.1).
+
 = 0.1.7 =
-* support wordpress version 3.9 or higher ( tinyMCE version 4.x).
+* support wordpress version 3.9 or higher ( tinyMCE version 4.0).
 
 = 0.1.6 =
 * Fixed a null check of posts.

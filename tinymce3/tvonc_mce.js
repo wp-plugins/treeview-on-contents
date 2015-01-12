@@ -8,8 +8,8 @@
  * License: GPLv2
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  *
- * Version: 0.1.7
- * Date: 9 sep 2014
+ * Version: 0.1.8
+ * Date: 12 jan 2015
  * 
  * Copyright 2013 sekishi http://lab.planetleaf.com/
  * For documentation visit http://lab.planetleaf.com/
@@ -464,8 +464,8 @@ function fullbindContextMenu() {
 
 
 jQuery(function() {
-	
-	var radio = jQuery('div.radio-group');
+
+	var radio = jQuery('div.tvonc-radio-group');
 	radio.disableSelection();
 	jQuery('input', radio).css({'opacity': '0'});
 	jQuery('label', radio).click(function() {

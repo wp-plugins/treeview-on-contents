@@ -18,7 +18,7 @@
 
 (function(jQuery) {
 
- 	var menu, shadow, trigger, content, hash, currentTarget;
+  var menu, shadow, trigger, content, hash, currentTarget;
   var defaults = {
     menuStyle: {
       listStyle: 'none',
@@ -46,7 +46,7 @@
     shadow : true,
     onContextMenu: null,
     onShowMenu: null
- 	};
+  };
 
   jQuery.fn.contextMenu = function(id, options) {
     if (!menu) {                                      // Create singleton menu

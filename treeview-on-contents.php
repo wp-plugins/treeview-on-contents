@@ -3,7 +3,7 @@
  * Plugin Name: TreeView On Contents
  * Plugin URI: http://lab.planetleaf.com/development/wordpress/treeview-on-contents-plugin.html
  * Description: TreeView On Contents.
- * Version: 0.1.7
+ * Version: 0.1.8
  * Author: sekishi
  * Author URI: http://lab.planetleaf.com/
  * Text Domain: treeview-on-contents
@@ -23,11 +23,15 @@ function wp_tvonc_plugin_url( $path = '' ) {
 	return $url;
 }
 
+add_action('wp_ajax_treeview_on_contents_tinymce', 'treeview_on_contents_ajax_tinymce');
 
-
+function treeview_on_contents_ajax_tinymce() {
+    include( 'tinymce3/dialog.php' );
+    die();
+}
 
 class TreeViewOnContents {
-	var $version = '0.1.7';
+	var $version = '0.1.8';
 	var $buttons = array();
 	
 	
